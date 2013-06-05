@@ -1,0 +1,66 @@
+﻿@using System.Web.Optimization
+@model NUniverse.RomanBookkeeper.WebApplication.Models.NumberModel
+
+@{
+    ViewBag.Title = "Add some numbers";
+}
+
+<h2>Add some numbers</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Numbers</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LeftRomanOperand)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LeftRomanOperand)
+            @Html.ValidationMessageFor(model => model.LeftRomanOperand)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RightRomanOperand)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RightRomanOperand)
+            @Html.ValidationMessageFor(model => model.RightRomanOperand)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LeftArabicOperand)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LeftArabicOperand)
+            @Html.ValidationMessageFor(model => model.LeftArabicOperand)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RightArabicOperand)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RightArabicOperand)
+            @Html.ValidationMessageFor(model => model.RightArabicOperand)
+        </div>
+
+        <p>
+            <input type="submit" value="Add" />
+        </p>
+        
+        <p>
+            Result: @Html.DisplayTextFor(model => model.AdditionResult)
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back", "Index", "Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/jquery")
+}
