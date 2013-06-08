@@ -1,4 +1,4 @@
-﻿using System.Web.Http;
+﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -8,15 +8,52 @@ namespace NUniverse.RomanBookkeeper.WebApplication
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
-    public class MvcApplication : System.Web.HttpApplication
+    public class RomanBookkeeperMvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            RegisterGlobalFilters(GlobalFilters.Filters);
+            RegisterRoutes(RouteTable.Routes);
+            RegisterBundles(BundleTable.Bundles);
+        }
+
+        private static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+            filters.Add(new HandleErrorAttribute());
+        }
+
+        private static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(name: "Default",
+                            url: "{controller}/{action}/{id}",
+                            defaults: new {controller = "Home", action = "Index", id = UrlParameter.Optional});
+        }
+
+        // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
+        private static void RegisterBundles(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include("~/Scripts/jquery-ui-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.unobtrusive*", "~/Scripts/jquery.validate*"));
+            // Use the development version of Modernizr to develop with and learn from. Then, when you're
+            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/modernizr-*"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+                                                                             "~/Content/themes/base/jquery.ui.core.css",
+                                                                             "~/Content/themes/base/jquery.ui.resizable.css",
+                                                                             "~/Content/themes/base/jquery.ui.selectable.css",
+                                                                             "~/Content/themes/base/jquery.ui.accordion.css",
+                                                                             "~/Content/themes/base/jquery.ui.autocomplete.css",
+                                                                             "~/Content/themes/base/jquery.ui.button.css",
+                                                                             "~/Content/themes/base/jquery.ui.dialog.css",
+                                                                             "~/Content/themes/base/jquery.ui.slider.css",
+                                                                             "~/Content/themes/base/jquery.ui.tabs.css",
+                                                                             "~/Content/themes/base/jquery.ui.datepicker.css",
+                                                                             "~/Content/themes/base/jquery.ui.progressbar.css",
+                                                                             "~/Content/themes/base/jquery.ui.theme.css"));
         }
     }
 }

@@ -6,19 +6,21 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "";
+            ViewBag.Title = "Home";
+            ViewBag.Message = "Welcome to the Roman Bookkeeper MMXIII application";
             return View();
         }
 
         public ActionResult Summing()
         {
-            //throw new Exception("BOOOM!", new Exception("Root Cause ;)"));
-            ViewBag.Message = "Perform summing of two Roman or Arabic numbers";
+            ViewBag.Title = "Summing";
+            ViewBag.Message = "Perform summing of two Roman numbers";
             return View();
         }
 
         public ActionResult Contact()
         {
+            ViewBag.Title = "Contact";
             ViewBag.Message = "This web application has been developed by Bogdan Marian";
             return View();
         }
