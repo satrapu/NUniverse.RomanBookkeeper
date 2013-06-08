@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUniverse.RomanBookkeeper.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUniverse.RomanBookkeeper.Core.Tests", "NUniverse.RomanBookkeeper.Core.Tests\NUniverse.RomanBookkeeper.Core.Tests.csproj", "{13F377A8-81A5-41B8-BEE7-79969331A497}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUniverse.RomanBookkeeper.WebApplication.Tests", "NUniverse.RomanBookkeeper.WebApplication.Tests\NUniverse.RomanBookkeeper.WebApplication.Tests.csproj", "{55A3B4B0-D62B-4CF7-83AA-4E2EA96F714B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{13F377A8-81A5-41B8-BEE7-79969331A497}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13F377A8-81A5-41B8-BEE7-79969331A497}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13F377A8-81A5-41B8-BEE7-79969331A497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55A3B4B0-D62B-4CF7-83AA-4E2EA96F714B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A3B4B0-D62B-4CF7-83AA-4E2EA96F714B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A3B4B0-D62B-4CF7-83AA-4E2EA96F714B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A3B4B0-D62B-4CF7-83AA-4E2EA96F714B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
