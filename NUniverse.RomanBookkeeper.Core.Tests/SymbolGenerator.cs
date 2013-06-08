@@ -40,5 +40,10 @@ namespace NUniverse.RomanBookkeeper.Core.Tests
         {
             return "IVXLCDM".ToUpperInvariant().Select(letter => letter.ToString(CultureInfo.InvariantCulture));
         }
+
+        public static IEnumerable<string> GenerateValidRomanNumerals()
+        {
+            return new[] {"MMXIII"};
+        }
     }
 }

@@ -7,15 +7,15 @@ namespace NUniverse.RomanBookkeeper.Core.Tests
     public class RomanNumberTests
     {
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof (ArgumentException))]
         public void Constructor_UsigNullEmptyOrWhitespaceStringAsParameter_ThrowsException(
-                [ValueSource(typeof(SymbolGenerator), "GetNullEmptyAndWhitespaceStrings")] string nullEmptyOrWhitespaceString)
+                [ValueSource(typeof (SymbolGenerator), "GetNullEmptyAndWhitespaceStrings")] string nullEmptyOrWhitespaceString)
         {
             RomanNumber romanNumber = new RomanNumber(nullEmptyOrWhitespaceString);
         }
 
         [Test]
-        public void TryParse_UsingNonRomanSymbol_ReturnsFalse([ValueSource(typeof(SymbolGenerator), "GetNonRomanSymbols")] string nonRomanSymbol)
+        public void TryParse_UsingNonRomanSymbol_ReturnsFalse([ValueSource(typeof (SymbolGenerator), "GetNonRomanSymbols")] string nonRomanSymbol)
         {
             RomanNumber romanNumber;
             bool parseResult = RomanNumber.TryParse(nonRomanSymbol, out romanNumber);
@@ -23,7 +23,7 @@ namespace NUniverse.RomanBookkeeper.Core.Tests
         }
 
         [Test]
-        public void TryParse_UsingRomanBasicSymbol_ReturnsTrue([ValueSource(typeof(SymbolGenerator), "GetRomanBasicSymbols")] string basicRomanSymbol)
+        public void TryParse_UsingRomanBasicSymbol_ReturnsTrue([ValueSource(typeof (SymbolGenerator), "GetRomanBasicSymbols")] string basicRomanSymbol)
         {
             RomanNumber romanNumber;
             bool parseResult = RomanNumber.TryParse(basicRomanSymbol, out romanNumber);
@@ -36,6 +36,14 @@ namespace NUniverse.RomanBookkeeper.Core.Tests
             string giganticAmountOfThousandRomanSymbol = new string('M', 99999);
             RomanNumber romanNumber;
             bool parseResult = RomanNumber.TryParse(giganticAmountOfThousandRomanSymbol, out romanNumber);
+            Assert.IsTrue(parseResult);
+        }
+
+        [Test]
+        public void TryParse_UsingValidRomanNumeral_ReturnsTrue([ValueSource(typeof (SymbolGenerator), "GenerateValidRomanNumerals")] string romanNumberAsString)
+        {
+            RomanNumber romanNumber;
+            bool parseResult = RomanNumber.TryParse(romanNumberAsString, out romanNumber);
             Assert.IsTrue(parseResult);
         }
     }
