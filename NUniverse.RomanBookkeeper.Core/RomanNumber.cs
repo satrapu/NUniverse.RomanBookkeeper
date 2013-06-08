@@ -108,7 +108,7 @@ namespace NUniverse.RomanBookkeeper.Core
                 return false;
             }
 
-            result = new RomanNumber {Value = input};
+            result = new RomanNumber { Value = input };
             return true;
         }
 
@@ -129,7 +129,7 @@ namespace NUniverse.RomanBookkeeper.Core
                 throw new ArgumentNullException("otherRomanNumber");
             }
 
-            return new RomanNumber(string.Concat(Value, " + ", otherRomanNumber.Value));
+            return new RomanNumber(string.Concat(Value, otherRomanNumber.Value));
         }
     }
 }

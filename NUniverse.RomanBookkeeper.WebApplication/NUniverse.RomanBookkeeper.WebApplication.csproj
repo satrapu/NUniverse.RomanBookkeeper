@@ -131,6 +131,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\SummingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -235,9 +236,7 @@
     <Content Include="packages.config" />
     <None Include="readme.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\NUniverse.RomanBookkeeper.Core\NUniverse.RomanBookkeeper.Core.csproj">
       <Project>{53f45d9f-a126-4d22-93f5-f1b2467db77d}</Project>

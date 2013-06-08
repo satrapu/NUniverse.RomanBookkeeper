@@ -49,6 +49,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NUniverse.RomanBookkeeper.Core\NUniverse.RomanBookkeeper.Core.csproj">
+      <Project>{53F45D9F-A126-4D22-93F5-F1B2467DB77D}</Project>
+      <Name>NUniverse.RomanBookkeeper.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NUniverse.RomanBookkeeper.WebApplication\NUniverse.RomanBookkeeper.WebApplication.csproj">
       <Project>{b4542d4f-cf46-4ec6-be13-6db6c6ff548e}</Project>
       <Name>NUniverse.RomanBookkeeper.WebApplication</Name>

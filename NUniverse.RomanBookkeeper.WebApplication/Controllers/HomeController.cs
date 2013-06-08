@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using NUniverse.RomanBookkeeper.Core;
+using NUniverse.RomanBookkeeper.WebApplication.Models;
 
 namespace NUniverse.RomanBookkeeper.WebApplication.Controllers
 {
@@ -13,8 +15,7 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Controllers
 
         public ActionResult Summing()
         {
-            ViewBag.Title = "Summing";
-            ViewBag.Message = "Perform summing of two Roman numbers";
+            InitSummingView();
             return View();
         }
 
@@ -23,6 +24,23 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Controllers
             ViewBag.Title = "Contact";
             ViewBag.Message = "This web application has been developed by Bogdan Marian";
             return View();
+        }
+
+        public ActionResult DoSumming(SummingModel model)
+        {
+            RomanNumber leftOperand = RomanNumber.Parse(model.LeftOperand);
+            RomanNumber rightOperand = RomanNumber.Parse(model.RightOperand);
+            RomanNumber result = leftOperand.SumWith(rightOperand);
+            ViewBag.SummingResult = result.Value;
+
+            InitSummingView();
+            return View("Summing");
+        }
+
+        private void InitSummingView()
+        {
+            ViewBag.Title = "Summing";
+            ViewBag.Message = "Perform summing of two Roman numbers";
         }
     }
 }

@@ -18,12 +18,12 @@ namespace NUniverse.RomanBookkeeper.WebApplication
             RegisterBundles(BundleTable.Bundles);
         }
 
-        private static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
         }
 
-        private static void RegisterRoutes(RouteCollection routes)
+        public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(name: "Default",
@@ -32,7 +32,7 @@ namespace NUniverse.RomanBookkeeper.WebApplication
         }
 
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
-        private static void RegisterBundles(BundleCollection bundles)
+        public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.js"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include("~/Scripts/jquery-ui-{version}.js"));
