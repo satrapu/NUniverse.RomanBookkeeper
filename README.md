@@ -3,7 +3,7 @@ NUniverse.RomanBookkeeper
 
 Description
 -
-Performs suming of two Roman or Arabic numbers.
+Performs suming of two Roman or Arabic numbers using strings.
 
 Current version
 -
