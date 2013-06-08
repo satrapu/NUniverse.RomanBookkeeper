@@ -8,9 +8,10 @@ namespace NUniverse.RomanBookkeeper.Core.Tests
     {
         [Test]
         [ExpectedException(typeof(ArgumentException))]
-        public void Constructor_UsigNullEmptyOrWhitespaceStringAsParameter_ThrowsException([Values(null, "", " ", "\t")] string input)
+        public void Constructor_UsigNullEmptyOrWhitespaceStringAsParameter_ThrowsException(
+                [ValueSource(typeof(SymbolGenerator), "GetNullEmptyAndWhitespaceStrings")] string nullEmptyOrWhitespaceString)
         {
-            RomanNumber romanNumber = new RomanNumber(input);
+            RomanNumber romanNumber = new RomanNumber(nullEmptyOrWhitespaceString);
         }
 
         [Test]
