@@ -3,7 +3,7 @@ NUniverse.RomanBookkeeper
 
 Description
 -
-Roman number calculator.
+Performs suming of two Roman or Arabic numbers.
 
 Current version
 -
