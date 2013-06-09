@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using NUnit.Framework;
+using NUniverse.RomanBookkeeper.WebApplication.Arithmetics;
 using NUniverse.RomanBookkeeper.WebApplication.Controllers;
-using NUniverse.RomanBookkeeper.WebApplication.Core;
 using NUniverse.RomanBookkeeper.WebApplication.Models;
 
 namespace NUniverse.RomanBookkeeper.WebApplication.Tests.Controllers

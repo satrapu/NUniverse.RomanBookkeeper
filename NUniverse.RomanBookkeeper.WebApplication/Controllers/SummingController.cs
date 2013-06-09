@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using NUniverse.RomanBookkeeper.WebApplication.Core;
+using NUniverse.RomanBookkeeper.WebApplication.Arithmetics;
 using NUniverse.RomanBookkeeper.WebApplication.Models;
 
 namespace NUniverse.RomanBookkeeper.WebApplication.Controllers

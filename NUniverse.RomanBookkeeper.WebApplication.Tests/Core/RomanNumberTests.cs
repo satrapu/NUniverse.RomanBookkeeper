@@ -1,6 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
-using NUniverse.RomanBookkeeper.WebApplication.Core;
+using NUniverse.RomanBookkeeper.WebApplication.Arithmetics;
 
 namespace NUniverse.RomanBookkeeper.WebApplication.Tests.Core
 {
@@ -10,7 +10,7 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Tests.Core
         [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void Constructor_UsigNullEmptyOrWhitespaceStringAsParameter_ThrowsException(
-            [ValueSource(typeof(SymbolGenerator), "GetNullEmptyAndWhitespaceStrings")] string nullEmptyOrWhitespaceString)
+                [ValueSource(typeof(SymbolGenerator), "GetNullEmptyAndWhitespaceStrings")] string nullEmptyOrWhitespaceString)
         {
             RomanNumber romanNumber = new RomanNumber(nullEmptyOrWhitespaceString);
         }
@@ -42,7 +42,7 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Tests.Core
 
         [Test]
         public void TryParse_UsingValidRomanNumeral_ReturnsTrue(
-            [ValueSource(typeof(SymbolGenerator), "GenerateValidRomanNumerals")] string romanNumberAsString)
+                [ValueSource(typeof(SymbolGenerator), "GenerateValidRomanNumerals")] string romanNumberAsString)
         {
             RomanNumber romanNumber;
             bool parseResult = RomanNumber.TryParse(romanNumberAsString, out romanNumber);
@@ -59,14 +59,14 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Tests.Core
         [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void Parse_UsigNullEmptyOrWhitespaceStringAsParameter_ThrowsException(
-            [ValueSource(typeof(SymbolGenerator), "GetNullEmptyAndWhitespaceStrings")] string nullEmptyOrWhitespaceString)
+                [ValueSource(typeof(SymbolGenerator), "GetNullEmptyAndWhitespaceStrings")] string nullEmptyOrWhitespaceString)
         {
             RomanNumber.Parse(nullEmptyOrWhitespaceString);
         }
 
         [Test]
         public void Parse_UsingRomanBasicSymbol_ReturnsRomanNumber(
-            [ValueSource(typeof(SymbolGenerator), "GetRomanBasicSymbols")] string basicRomanSymbol)
+                [ValueSource(typeof(SymbolGenerator), "GetRomanBasicSymbols")] string basicRomanSymbol)
         {
             RomanNumber romanNumber = RomanNumber.Parse(basicRomanSymbol);
             Assert.IsNotNull(romanNumber);
@@ -137,6 +137,14 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Tests.Core
             RomanNumber rightOperand = new RomanNumber("MCCCXX"); //1320
             RomanNumber actualResult = leftOperand.SumWith(rightOperand);
             Assert.AreEqual(expectedResult.Value, actualResult.Value);
+        }
+
+        [Test]
+        public void Sum()
+        {
+            RomanNumber leftOperand = new RomanNumber("MMDLIV"); //2554
+            RomanNumber rightOperand = new RomanNumber("MCCCXX"); //1320
+            string result = RomanNumber.Sum(leftOperand, rightOperand);
         }
     }
 }
