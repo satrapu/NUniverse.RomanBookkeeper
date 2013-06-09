@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace NUniverse.RomanBookkeeper.Core.Tests
+namespace NUniverse.RomanBookkeeper.WebApplication.Tests.Core
 {
     public static class SymbolGenerator
     {

@@ -130,6 +130,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SummingController.cs" />
+    <Compile Include="Core\RomanNumber.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -239,12 +240,6 @@
     <Content Include="Views\Summing\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\NUniverse.RomanBookkeeper.Core\NUniverse.RomanBookkeeper.Core.csproj">
-      <Project>{53f45d9f-a126-4d22-93f5-f1b2467db77d}</Project>
-      <Name>NUniverse.RomanBookkeeper.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

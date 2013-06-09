@@ -1,21 +1,22 @@
 ﻿using System;
 using NUnit.Framework;
+using NUniverse.RomanBookkeeper.WebApplication.Core;
 
-namespace NUniverse.RomanBookkeeper.Core.Tests
+namespace NUniverse.RomanBookkeeper.WebApplication.Tests.Core
 {
     [TestFixture]
     public class RomanNumberTests
     {
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void Constructor_UsigNullEmptyOrWhitespaceStringAsParameter_ThrowsException(
-                [ValueSource(typeof (SymbolGenerator), "GetNullEmptyAndWhitespaceStrings")] string nullEmptyOrWhitespaceString)
+            [ValueSource(typeof(SymbolGenerator), "GetNullEmptyAndWhitespaceStrings")] string nullEmptyOrWhitespaceString)
         {
             RomanNumber romanNumber = new RomanNumber(nullEmptyOrWhitespaceString);
         }
 
         [Test]
-        public void TryParse_UsingNonRomanSymbol_ReturnsFalse([ValueSource(typeof (SymbolGenerator), "GetNonRomanSymbols")] string nonRomanSymbol)
+        public void TryParse_UsingNonRomanSymbol_ReturnsFalse([ValueSource(typeof(SymbolGenerator), "GetNonRomanSymbols")] string nonRomanSymbol)
         {
             RomanNumber romanNumber;
             bool parseResult = RomanNumber.TryParse(nonRomanSymbol, out romanNumber);
@@ -23,7 +24,7 @@ namespace NUniverse.RomanBookkeeper.Core.Tests
         }
 
         [Test]
-        public void TryParse_UsingRomanBasicSymbol_ReturnsTrue([ValueSource(typeof (SymbolGenerator), "GetRomanBasicSymbols")] string basicRomanSymbol)
+        public void TryParse_UsingRomanBasicSymbol_ReturnsTrue([ValueSource(typeof(SymbolGenerator), "GetRomanBasicSymbols")] string basicRomanSymbol)
         {
             RomanNumber romanNumber;
             bool parseResult = RomanNumber.TryParse(basicRomanSymbol, out romanNumber);
@@ -40,7 +41,8 @@ namespace NUniverse.RomanBookkeeper.Core.Tests
         }
 
         [Test]
-        public void TryParse_UsingValidRomanNumeral_ReturnsTrue([ValueSource(typeof (SymbolGenerator), "GenerateValidRomanNumerals")] string romanNumberAsString)
+        public void TryParse_UsingValidRomanNumeral_ReturnsTrue(
+            [ValueSource(typeof(SymbolGenerator), "GenerateValidRomanNumerals")] string romanNumberAsString)
         {
             RomanNumber romanNumber;
             bool parseResult = RomanNumber.TryParse(romanNumberAsString, out romanNumber);
@@ -48,22 +50,23 @@ namespace NUniverse.RomanBookkeeper.Core.Tests
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
-        public void Parse_UsingNonRomanSymbol_ReturnsFalse([ValueSource(typeof (SymbolGenerator), "GetNonRomanSymbols")] string nonRomanSymbol)
+        [ExpectedException(typeof(ArgumentException))]
+        public void Parse_UsingNonRomanSymbol_ReturnsFalse([ValueSource(typeof(SymbolGenerator), "GetNonRomanSymbols")] string nonRomanSymbol)
         {
             RomanNumber.Parse(nonRomanSymbol);
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void Parse_UsigNullEmptyOrWhitespaceStringAsParameter_ThrowsException(
-                [ValueSource(typeof (SymbolGenerator), "GetNullEmptyAndWhitespaceStrings")] string nullEmptyOrWhitespaceString)
+            [ValueSource(typeof(SymbolGenerator), "GetNullEmptyAndWhitespaceStrings")] string nullEmptyOrWhitespaceString)
         {
             RomanNumber.Parse(nullEmptyOrWhitespaceString);
         }
 
         [Test]
-        public void Parse_UsingRomanBasicSymbol_ReturnsRomanNumber([ValueSource(typeof (SymbolGenerator), "GetRomanBasicSymbols")] string basicRomanSymbol)
+        public void Parse_UsingRomanBasicSymbol_ReturnsRomanNumber(
+            [ValueSource(typeof(SymbolGenerator), "GetRomanBasicSymbols")] string basicRomanSymbol)
         {
             RomanNumber romanNumber = RomanNumber.Parse(basicRomanSymbol);
             Assert.IsNotNull(romanNumber);
@@ -119,7 +122,7 @@ namespace NUniverse.RomanBookkeeper.Core.Tests
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void SumWith_UsigNullAsParameter_ThrowsException()
         {
             RomanNumber.OneThousand.SumWith(null);

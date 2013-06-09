@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace NUniverse.RomanBookkeeper.Core
+namespace NUniverse.RomanBookkeeper.WebApplication.Core
 {
     public class RomanNumber
     {
@@ -108,7 +108,7 @@ namespace NUniverse.RomanBookkeeper.Core
                 return false;
             }
 
-            result = new RomanNumber { Value = input };
+            result = new RomanNumber {Value = input};
             return true;
         }
 
