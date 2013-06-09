@@ -1,0 +1,20 @@
+﻿@model NUniverse.RomanBookkeeper.WebApplication.Models.SummingModel
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+@using (Html.BeginForm("DoSumming", "Summing"))
+{
+    @Html.ValidationSummary()
+
+    <div>
+        @Html.EditorFor(model => model.LeftOperand) + @Html.EditorFor(model => model.RightOperand) = @Html.Raw(ViewBag.SummingResult)
+    </div>
+    
+    <input type="submit" value="Do summing"/>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")

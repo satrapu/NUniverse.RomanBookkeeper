@@ -18,8 +18,8 @@
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Summing", "Summing", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Summing", "Index", "Summing")</li>
+                            <li>@Html.ActionLink("About", "Index", "About")</li>
                         </ul>
                     </nav>
                 </div>
@@ -39,7 +39,6 @@
             </div>
         </footer>
 
-        @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
     </body>
 </html>

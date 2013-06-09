@@ -126,6 +126,7 @@ namespace NUniverse.RomanBookkeeper.Core.Tests
         }
 
         [Test]
+        [Ignore]
         public void SumWith_UsigRomanNumber_ReturnsRomanNumber()
         {
             RomanNumber expectedResult = new RomanNumber("MMMDCCCLXXIV"); //3874

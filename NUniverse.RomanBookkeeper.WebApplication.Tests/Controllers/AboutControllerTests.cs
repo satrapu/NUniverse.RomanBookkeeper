@@ -5,14 +5,14 @@ using NUniverse.RomanBookkeeper.WebApplication.Controllers;
 namespace NUniverse.RomanBookkeeper.WebApplication.Tests.Controllers
 {
     [TestFixture]
-    public class HomeControllerTests
+    public class AboutControllerTests
     {
         [Test]
         public void Index_ReturnsView()
         {
-            HomeController homeController = new HomeController();
-            ViewResult viewResult = (ViewResult)homeController.Index();
-            Assert.AreEqual("Home", viewResult.ViewBag.Title);
+            AboutController aboutController = new AboutController();
+            ViewResult viewResult = (ViewResult)aboutController.Index();
+            Assert.AreEqual("About", viewResult.ViewBag.Title);
         }
     }
 }

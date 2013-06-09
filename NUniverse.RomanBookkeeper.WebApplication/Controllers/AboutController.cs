@@ -2,12 +2,12 @@
 
 namespace NUniverse.RomanBookkeeper.WebApplication.Controllers
 {
-    public class HomeController : Controller
+    public class AboutController : Controller
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home";
-            ViewBag.Message = "Welcome to the Roman Bookkeeper MMXIII application";
+            ViewBag.Title = "About";
+            ViewBag.Message = "This web application has been developed by Bogdan Marian";
             return View();
         }
     }
