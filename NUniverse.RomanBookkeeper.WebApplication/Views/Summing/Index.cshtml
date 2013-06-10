@@ -1,4 +1,5 @@
-﻿@model NUniverse.RomanBookkeeper.WebApplication.Models.SummingModel
+﻿@using NUniverse.RomanBookkeeper.WebApplication.Models
+@model SummingModel
 
 <hgroup class="title">
     <h1>@ViewBag.Title</h1>
@@ -12,7 +13,11 @@
     <div>
         @Html.EditorFor(model => model.LeftOperand) + @Html.EditorFor(model => model.RightOperand) = @Html.Raw(ViewBag.SummingResult)
     </div>
-    
+    <div>
+        @Html.LabelFor(model => model.NumeralSystem) 
+        @Html.DropDownListFor(model => model.NumeralSystem, new SelectList(NumeralSystems.Values))
+    </div>
+    <hr/>
     <input type="submit" value="Do summing"/>
 }
 

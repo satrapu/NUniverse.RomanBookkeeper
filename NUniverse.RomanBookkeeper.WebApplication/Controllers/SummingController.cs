@@ -16,26 +16,39 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool hasErrors = false;
-                RomanNumber leftOperand;
-                RomanNumber rightOperand;
+                //bool hasErrors = false;
+                //RomanNumber leftOperand;
+                //RomanNumber rightOperand;
 
-                if (!RomanNumber.TryParse(model.LeftOperand, out leftOperand))
+                //if (!RomanNumber.TryParse(model.LeftOperand, out leftOperand))
+                //{
+                //    ModelState.AddModelError("LeftOperand", string.Format("'{0}' is not a valid Roman number", model.LeftOperand));
+                //    hasErrors = true;
+                //}
+
+                //if (!RomanNumber.TryParse(model.RightOperand, out rightOperand))
+                //{
+                //    ModelState.AddModelError("RightOperand", string.Format("'{0}' is not a valid Roman number", model.RightOperand));
+                //    hasErrors = true;
+                //}
+                Abacus abacus = null;
+
+                switch (model.NumeralSystem)
                 {
-                    ModelState.AddModelError("LeftOperand", string.Format("'{0}' is not a valid Roman number", model.LeftOperand));
-                    hasErrors = true;
+                    case "Roman":
+                        abacus = new RomanAbacus(100); // Roman abacus wil be able to handle hundreds of thousands
+                        break;
+                    case "Arabic":
+                        abacus = new ArabicAbacus(6); // Arabic abacus wil be able to handle hundreds of thousands
+                        break;
+                    default:
+                        ModelState.AddModelError("NumeralSytem", string.Format("'{0}' is not a registered numberal system", model.NumeralSystem));
+                        break;
                 }
 
-                if (!RomanNumber.TryParse(model.RightOperand, out rightOperand))
+                if (abacus != null)
                 {
-                    ModelState.AddModelError("RightOperand", string.Format("'{0}' is not a valid Roman number", model.RightOperand));
-                    hasErrors = true;
-                }
-
-                if (!hasErrors)
-                {
-                    RomanNumber result = leftOperand.SumWith(rightOperand);
-                    ViewBag.SummingResult = result.Value;
+                    ViewBag.SummingResult = abacus.PerformSumming(model.LeftOperand, model.RightOperand);
                 }
             }
 
@@ -46,7 +59,7 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Controllers
         private void InitSummingView()
         {
             ViewBag.Title = "Summing";
-            ViewBag.Message = "Perform summing of two Roman numbers";
+            ViewBag.Message = "Perform summing of two numbers";
         }
     }
 }

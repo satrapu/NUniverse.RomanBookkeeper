@@ -5,13 +5,13 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
 {
     public abstract class Abacus
     {
-        public string Add(string leftOperand, string rightOperand)
+        public string PerformSumming(string leftOperand, string rightOperand)
         {
             Rode initialRode = GetInitialRode();
 
             if (initialRode == null)
             {
-                throw new InvalidOperationException("This abacus has no rodes, thus is unable to perform any additions");
+                throw new InvalidOperationException("This abacus has no rodes, thus is unable to perform any calculus");
             }
 
             List<Bead> leftOperandBeads;
@@ -33,13 +33,15 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
 
             foreach (Bead bead in beads)
             {
-                initialRode.AddBead(bead);
+                initialRode.Add(bead);
             }
 
-            return null;
+            string result = GetResult();
+            return result;
         }
 
-        protected abstract bool TryParse(string input, out List<Bead> beads);
+        public abstract bool TryParse(string input, out List<Bead> beads);
         protected abstract Rode GetInitialRode();
+        protected abstract string GetResult();
     }
 }

@@ -5,17 +5,19 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
     /// <summary>
     /// Represents a part of an abacus which holds beads (or balls).
     /// </summary>
-    public class Rode
+    public abstract class Rode
     {
-        private int numberOfPresentBeads;
+        private int beadsCount;
 
-        public int BeadThreshold
+        public int BeadsCount
         {
-            get;
-            private set;
+            get
+            {
+                return beadsCount;
+            }
         }
 
-        public string Symbol
+        public int? BeadThreshold
         {
             get;
             private set;
@@ -27,47 +29,60 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
             private set;
         }
 
-        public Rode(string symbol, int beadThreshold, Rode upperRode)
+        protected Rode()
         {
-            if (string.IsNullOrWhiteSpace(symbol))
+            beadsCount = 0;
+        }
+
+        protected Rode(int? beadThreshold, Rode upperRode)
+            : this()
+        {
+            if (beadThreshold.HasValue && beadThreshold <= 0)
             {
-                throw new ArgumentException("Symbol was not set", "symbol");
+                throw new ArgumentOutOfRangeException("beadThreshold", beadThreshold, "Bead threshold must be null or a positive integer");
             }
 
-            if (beadThreshold <= 0)
-            {
-                throw new ArgumentOutOfRangeException("beadThreshold", beadThreshold, "Bead threshold must be a positive integer");
-            }
-
-            numberOfPresentBeads = 0;
-            Symbol = symbol;
             BeadThreshold = beadThreshold;
             UpperRode = upperRode;
         }
 
-        public void AddBead(Bead bead)
+        public void Add(Bead bead)
         {
-            if (bead.Symbol == Symbol)
+            if (Accepts(bead))
             {
-                if (numberOfPresentBeads < BeadThreshold)
+                if (BeadThreshold.HasValue)
                 {
-                    numberOfPresentBeads++;
+                    if (beadsCount < BeadThreshold.Value)
+                    {
+                        beadsCount++;
+                    }
+                    else
+                    {
+                        string higherRankedSymbol = GetHigherRankedSymbol(bead.Symbol);
+
+                        if (higherRankedSymbol == null)
+                        {
+                            beadsCount++;
+                        }
+                        else
+                        {
+                            beadsCount = 1;
+                            UpperRode.Add(new Bead(higherRankedSymbol));
+                        }
+                    }
                 }
                 else
                 {
-                    ClearBeads();
-                    UpperRode.AddBead(bead);
+                    beadsCount++;
                 }
             }
-            else
+            else if (UpperRode != null)
             {
-                UpperRode.AddBead(bead);
+                UpperRode.Add(bead);
             }
         }
 
-        public void ClearBeads()
-        {
-            numberOfPresentBeads = 0;
-        }
+        protected abstract bool Accepts(Bead bead);
+        protected abstract string GetHigherRankedSymbol(string symbol);
     }
 }
