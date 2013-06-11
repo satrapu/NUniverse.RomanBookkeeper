@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace NUniverse.RomanBookkeeper.WebApplication.Tests.Core
+namespace NUniverse.RomanBookkeeper.WebApplication.Tests.Arithmetics
 {
     public static class SymbolGenerator
     {
@@ -44,6 +44,11 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Tests.Core
         public static IEnumerable<string> GenerateValidRomanNumerals()
         {
             return new[] {"MMXIII"};
+        }
+
+        public static IEnumerable<string> GenerateRomanSubtractionGroups()
+        {
+            return new[] { "MMXIII" };
         }
     }
 }

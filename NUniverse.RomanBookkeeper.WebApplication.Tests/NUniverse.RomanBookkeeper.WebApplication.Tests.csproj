@@ -46,11 +46,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arithmetics\BeadTests.cs" />
+    <Compile Include="Arithmetics\RomanAbacusTests.cs" />
+    <Compile Include="Arithmetics\RomanRodeTests.cs" />
     <Compile Include="Controllers\AboutControllerTests.cs" />
     <Compile Include="Controllers\HomeControllerTests.cs" />
     <Compile Include="Controllers\SummingControllerTests.cs" />
-    <Compile Include="Core\RomanNumberTests.cs" />
-    <Compile Include="Core\SymbolGenerator.cs" />
+    <Compile Include="Arithmetics\RomanNumberTests.cs" />
+    <Compile Include="Arithmetics\SymbolGenerator.cs" />
     <Compile Include="MvcApplicationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

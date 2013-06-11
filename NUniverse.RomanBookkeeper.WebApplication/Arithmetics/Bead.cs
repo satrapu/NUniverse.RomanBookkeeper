@@ -14,7 +14,7 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
         {
             if (string.IsNullOrWhiteSpace(symbol))
             {
-                throw new ArgumentNullException("symbol", "Symbol was not set");
+                throw new ArgumentException("Symbol must not be null, empty or whitespace string", "symbol");
             }
 
             Symbol = symbol;
