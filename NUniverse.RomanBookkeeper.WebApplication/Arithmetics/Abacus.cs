@@ -17,12 +17,12 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
             List<Bead> leftOperandBeads;
             List<Bead> rightOperandBeads;
 
-            if (!TryParse(leftOperand, out leftOperandBeads))
+            if (!TryDecompose(leftOperand, out leftOperandBeads))
             {
                 throw new ArgumentException(string.Format("{0} is not a valid numeral", leftOperand), "leftOperand");
             }
 
-            if (!TryParse(rightOperand, out rightOperandBeads))
+            if (!TryDecompose(rightOperand, out rightOperandBeads))
             {
                 throw new ArgumentException(string.Format("{0} is not a valid numeral", rightOperand), "rightOperand");
             }
@@ -40,7 +40,7 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
             return result;
         }
 
-        public abstract bool TryParse(string input, out List<Bead> beads);
+        protected abstract bool TryDecompose(string input, out List<Bead> beads);
         protected abstract Rode GetInitialRode();
         protected abstract string GetResult();
     }

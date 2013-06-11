@@ -47,7 +47,7 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
                         };
         }
 
-        public override bool TryParse(string input, out List<Bead> beads)
+        protected override bool TryDecompose(string input, out List<Bead> beads)
         {
             beads = null;
 
@@ -133,6 +133,7 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
             result = result.Replace("DD", "M");
             result = result.Replace("CCCCC", "D");
             result = result.Replace("CCCC", "CD");
+            result = result.Replace("LL", "C");
             result = result.Replace("XXXXX", "L");
             result = result.Replace("XXXX", "XL");
             result = result.Replace("VV", "X");
@@ -172,7 +173,9 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
                 if (input[currentIndex + 1] == symbolOneThousand)
                 {
                     currentIndex++;
-                    return CreateBeads(symbolOneHundred, 9);
+                    List<Bead> beads = new List<Bead>(CreateBeads(symbolFiveHundred));
+                    beads.AddRange(CreateBeads(symbolOneHundred, 4));
+                    return beads.ToArray();
                 }
 
                 // handle CD case
@@ -211,8 +214,10 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
                 if (input[currentIndex + 1] == symbolOneThousand)
                 {
                     currentIndex++;
-                    List<Bead> beads = new List<Bead>(CreateBeads(symbolOneHundred, 9));
-                    beads.AddRange(CreateBeads(symbolTen));
+                    List<Bead> beads = new List<Bead>(CreateBeads(symbolFiveHundred));
+                    beads.AddRange(CreateBeads(symbolOneHundred, 4));
+                    beads.AddRange(CreateBeads(symbolFifty));
+                    beads.AddRange(CreateBeads(symbolTen, 4));
                     return beads.ToArray();
                 }
 
@@ -221,7 +226,8 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
                 {
                     currentIndex++;
                     List<Bead> beads = new List<Bead>(CreateBeads(symbolOneHundred, 4));
-                    beads.AddRange(CreateBeads(symbolTen, 9));
+                    beads.AddRange(CreateBeads(symbolFifty));
+                    beads.AddRange(CreateBeads(symbolTen, 4));
                     return beads.ToArray();
                 }
 
@@ -229,7 +235,9 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
                 if (input[currentIndex + 1] == symbolOneHundred)
                 {
                     currentIndex++;
-                    return CreateBeads(symbolTen, 9);
+                    List<Bead> beads = new List<Bead>(CreateBeads(symbolFifty));
+                    beads.AddRange(CreateBeads(symbolTen, 4));
+                    return beads.ToArray();
                 }
 
                 // handle XL case
@@ -266,7 +274,8 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
                 if (input[currentIndex + 1] == symbolOneThousand)
                 {
                     currentIndex++;
-                    List<Bead> beads = new List<Bead>(CreateBeads(symbolOneHundred, 9));
+                    List<Bead> beads = new List<Bead>(CreateBeads(symbolFiveHundred));
+                    beads.AddRange(CreateBeads(symbolOneHundred, 4));
                     beads.AddRange(CreateBeads(symbolFifty));
                     beads.AddRange(CreateBeads(symbolTen, 4));
                     beads.AddRange(CreateBeads(symbolFive));
@@ -321,7 +330,8 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
                 if (input[currentIndex + 1] == symbolOneThousand)
                 {
                     currentIndex++;
-                    List<Bead> beads = new List<Bead>(CreateBeads(symbolOneHundred, 9));
+                    List<Bead> beads = new List<Bead>(CreateBeads(symbolFiveHundred));
+                    beads.AddRange(CreateBeads(symbolOneHundred, 4));
                     beads.AddRange(CreateBeads(symbolFifty));
                     beads.AddRange(CreateBeads(symbolTen, 4));
                     beads.AddRange(CreateBeads(symbolFive));

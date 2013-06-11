@@ -17,12 +17,5 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Models
             get;
             set;
         }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Numeral system is required")]
-        public string NumeralSystem
-        {
-            get;
-            set;
-        }
     }
 }

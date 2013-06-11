@@ -32,7 +32,7 @@ namespace NUniverse.RomanBookkeeper.WebApplication.Arithmetics
             rodes.Reverse();
         }
 
-        public override bool TryParse(string input, out List<Bead> beads)
+        protected override bool TryDecompose(string input, out List<Bead> beads)
         {
             beads = null;
 

@@ -128,8 +128,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arithmetics\Abacus.cs" />
-    <Compile Include="Arithmetics\ArabicAbacus.cs" />
-    <Compile Include="Arithmetics\ArabicRode.cs" />
     <Compile Include="Arithmetics\Bead.cs" />
     <Compile Include="Arithmetics\Rode.cs" />
     <Compile Include="Arithmetics\RomanAbacus.cs" />
@@ -138,11 +136,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SummingController.cs" />
     <Compile Include="Arithmetics\RomanNumber.cs" />
-    <Compile Include="Arithmetics\RomanSymbolComparer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\NumeralSystems.cs" />
     <Compile Include="Models\SummingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
