@@ -5,9 +5,9 @@ Description
 -
 Performs suming of two Roman or Arabic numbers using strings.
 
-Live Applicatinoa
+Live Application
 -
-romanbookkeeper.apphb.com
+http://romanbookkeeper.apphb.com
 
 License
 -
